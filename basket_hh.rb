@@ -1,29 +1,28 @@
 hh_basket = {}
-good = ''
 num = 1
 summ = 0
 loop do
   print 'Введите товар:'
   good = gets.chomp
-  (20-good.size).times{good+=' '}
-  break if good == 'стоп                '
+  break if good == 'стоп'
   print 'Введите цену:'
   price = gets.chomp.to_f
   print 'Введите количество:'
   weight = gets.chomp.to_f
-  hh_p_w = {price:0,weight:0}
-  hh_p_w [:price]=price
-  hh_p_w [:weight]=weight
-  hh_basket[good] = hh_p_w
+  hh_price_weihgt = {price:0,weight:0}
+  hh_price_weihgt [:price]=price
+  hh_price_weihgt [:weight]=weight
+  hh_basket[good] = hh_price_weihgt
   puts hh_basket
 end
-hh_basket.each do |key, val|
-  print "#{num} #{key}\t\t\кол-во:#{val[:weight]}\t\tцена:#{val[:price]}\t\t"
-  puts "сумма:#{val[:price] * val[:weight]}"
+hh_basket.each do |good, qualities|
+  print "#{num} #{good}\t\t\кол-во:#{qualities[:weight]}\t\tцена:#{qualities[:price]}\t\t"
+  puts "сумма:#{qualities[:price] * qualities[:weight]}"
+  #встроенного сумматора в классе hash я не обнаружил
   num += 1
-  summ += val[:price] * val[:weight]
+  summ += qualities[:price] * qualities[:weight]
 end
-puts "*************************************************************ИТОГО: #{summ}"
+puts "ИТОГО: #{summ}"
 #(
 # #Сумма покупок. Пользователь вводит поочередно название товара, цену за единицу
 # # и кол-во купленного товара (может быть нецелым числом). Пользователь

@@ -1,16 +1,13 @@
-arr_year=[30, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-arr_vyear=[30, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+arr_year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 today = 0
 print 'Введите год:'
-y = gets.chomp.to_i
+year = gets.chomp.to_i
 print 'Введите месяц:'
-m = gets.chomp.to_i
+month = gets.chomp.to_i
 print 'Введите день:'
-d = gets.chomp.to_i
-if y%4 == 0 && y%100 != 0 || y == 2000
-  #Можно реализовать через другой оператора цикла while month < m,m +=1....
-1.upto(m-1) { |month| today += arr_vyear[month] }
-else 1.upto(m-1) { |month| today += arr_year[month] }
+days = gets.chomp.to_i
+if year % 4 == 0 && year % 100 != 0 || year == 2000
+  arr_year[1] = 29
 end
-today += d
-puts "Сегодня #{today} день #{y} года"
+today = arr_year.take(month - 1).sum + days
+puts "Сегодня #{today} день #{year} года"
